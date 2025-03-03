@@ -1,6 +1,7 @@
 package soluciona.dev.picpay.controller;
 
 import feign.Response;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public class WalletController {
     }
 
     @PostMapping("/wallets")
-    public ResponseEntity<Wallet> createWallet(@RequestBody CreateWalletDto dto){
+    public ResponseEntity<Wallet> createWallet(@RequestBody @Valid CreateWalletDto dto){
 
         var wallet = walletService.createWallet(dto);
 
