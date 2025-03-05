@@ -2,6 +2,7 @@ package soluciona.dev.picpay.service;
 
 import org.springframework.stereotype.Service;
 import soluciona.dev.picpay.client.AuthorizationClient;
+import soluciona.dev.picpay.controller.dto.TransferDto;
 import soluciona.dev.picpay.entity.Transfer;
 import soluciona.dev.picpay.exception.PicPayException;
 
@@ -13,7 +14,7 @@ public class AuthorizationService {
         this.authorizationClient = authorizationClient;
     }
 
-    public boolean isAuthorized(Transfer transfer){
+    public boolean isAuthorized(TransferDto transfer){
 
         var resp =  authorizationClient.isAuthorized();
 

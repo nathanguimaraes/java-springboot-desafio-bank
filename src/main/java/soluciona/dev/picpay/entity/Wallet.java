@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
-
 @Entity
 @Table(name = "tb_wallet")
 public class Wallet {
@@ -25,7 +24,6 @@ public class Wallet {
     @Column(name = "password")
     private String password;
 
-
     @Column(name = "balance")
     private BigDecimal balance = BigDecimal.ZERO;
 
@@ -34,6 +32,30 @@ public class Wallet {
     private WalletType walletType;
 
     public Wallet() {
+    }
+
+    public Wallet(String fullName, String cpfCnpj, String email, String password, WalletType walletType) {
+        this.fullName = fullName;
+        this.cpfCnpj = cpfCnpj;
+        this.email = email;
+        this.password = password;
+        this.walletType = walletType;
+    }
+
+    public boolean isTransferAllowedForWalletType() {
+        return this.walletType.equals(WalletType.Enum.USER.get());
+    }
+
+    public boolean isBalancerEqualOrGreatherThan(BigDecimal value) {
+        return this.balance.doubleValue() >= value.doubleValue();
+    }
+
+    public void debit(BigDecimal value) {
+        this.balance = this.balance.subtract(value);
+    }
+
+    public void credit(BigDecimal value) {
+        this.balance = this.balance.add(value);
     }
 
     public Long getId() {
@@ -89,14 +111,6 @@ public class Wallet {
     }
 
     public void setWalletType(WalletType walletType) {
-        this.walletType = walletType;
-    }
-
-    public Wallet(String fullName, String cpfCnpj, String email, String password, WalletType walletType) {
-        this.fullName = fullName;
-        this.cpfCnpj = cpfCnpj;
-        this.email = email;
-        this.password = password;
         this.walletType = walletType;
     }
 }
