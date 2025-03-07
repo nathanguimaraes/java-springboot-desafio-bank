@@ -13,7 +13,6 @@ import soluciona.dev.bank.repository.WalletRepository;
 import soluciona.dev.bank.exception.TransferNotAllowedForWalletTypeException;
 
 import java.util.List;
-
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -36,7 +35,6 @@ public class TransferService {
 
     @Transactional
     public Transfer transfer(TransferDto transferDto) {
-
         var sender = walletRepository.findById(transferDto.payer())
                 .orElseThrow(() -> new WalletNotFoundException(transferDto.payer()));
 
@@ -60,7 +58,6 @@ public class TransferService {
     }
 
     private void validateTransfer(TransferDto transferDto, Wallet sender) {
-
         if (!sender.isTransferAllowedForWalletType()) {
             throw new TransferNotAllowedForWalletTypeException();
         }
@@ -72,6 +69,17 @@ public class TransferService {
         if (!authorizationService.isAuthorized(transferDto)) {
             throw new TransferNotAuthorizedException();
         }
+    }
 
+    public List<Transfer> findAll() {
+        return transferRepository.findAll();
+    }
+
+    public List<Transfer> findBySenderCpfCnpj(String cpfCnpj) {
+        return transferRepository.findBySenderCpfCnpj(cpfCnpj);
+    }
+
+    public List<Transfer> findByReceiverCpfCnpj(String cpfCnpj) {
+        return transferRepository.findByReceiverCpfCnpj(cpfCnpj);
     }
 }

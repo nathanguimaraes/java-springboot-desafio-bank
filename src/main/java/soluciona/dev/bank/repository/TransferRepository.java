@@ -9,4 +9,9 @@ import java.util.List;
 public interface TransferRepository extends JpaRepository<Transfer, Long> {
     List<Transfer> findBySenderIdOrReceiverId(Long senderId, Long receiverId);
 
+    @Query("SELECT t FROM Transfer t WHERE t.sender.cpfCnpj = :cpfCnpj")
+    List<Transfer> findBySenderCpfCnpj(@Param("cpfCnpj") String cpfCnpj);
+
+    @Query("SELECT t FROM Transfer t WHERE t.receiver.cpfCnpj = :cpfCnpj")
+    List<Transfer> findByReceiverCpfCnpj(@Param("cpfCnpj") String cpfCnpj);
 }
