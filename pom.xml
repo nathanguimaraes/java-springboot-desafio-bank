@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>soluciona.dev</groupId>
-	<artifactId>picpay</artifactId>
+	<artifactId>bank-happy-nation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>picpay</name>
+	<name>bank-happy-nation</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

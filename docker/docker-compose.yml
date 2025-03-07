@@ -6,10 +6,11 @@ services:
     environment:
       MYSQL_USER: "admin"
       MYSQL_PASSWORD: "123"
-      MYSQL_DATABASE: "picpaydb"
+      MYSQL_DATABASE: "bankdb"
       MYSQL_ROOT_PASSWORD: "123"  # Corrigido aqui
     volumes:
       - db_data:/var/lib/mysql
 
 volumes:
   db_data:
+
