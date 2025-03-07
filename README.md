@@ -1,4 +1,32 @@
-**Resolveremos o Desafio Backend do PicPay e aprenderemos:**
+
+Este repositório contém a implementação de uma API para pagamentos e transferências utilizando Java com Spring Boot. O objetivo é permitir operações seguras entre carteiras digitais, garantindo regras de negociação e controle de saldo.
+
+Tecnologias Utilizadas
+
+Java 17
+
+Spring Boot
+
+PostgreSQL
+
+Hibernate
+
+Docker (opcional para containerização)
+
+Estrutura do Projeto
+
+A API segue um modelo baseado em microsserviços e arquitetura hexagonal, incluindo as seguintes entidades principais:
+
+Wallet (Carteira)
+
+Transfer (Transferência entre carteiras)
+
+WalletType (Tipos de carteira)
+
+O diagrama abaixo ilustra a estrutura do banco de dados e relações entre as entidades:
+
+
+**Resolveremos e aprenderemos:**
 
 - Como criar uma API com Spring Boot
 - Como mapear as entidades com Jakarta Persistence
